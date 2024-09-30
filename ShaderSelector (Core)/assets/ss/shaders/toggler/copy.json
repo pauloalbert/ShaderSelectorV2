@@ -4,7 +4,7 @@
         "srcrgb": "one",
         "dstrgb": "zero"
     },
-    "vertex": "toggler/copy",
+    "vertex": "ss:toggler/copy",
     "fragment": "blit",
     "samplers": [
         { "name": "InSampler" }
