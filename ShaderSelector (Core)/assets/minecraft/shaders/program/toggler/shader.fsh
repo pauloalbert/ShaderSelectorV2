@@ -1,7 +1,7 @@
 #version 150
 
 uniform sampler2D InSampler;
-uniform sampler2D DiffuseDepthSampler;
+uniform sampler2D InDepthSampler;
 uniform sampler2D ControlSampler;
 uniform vec2 OutSize;
 

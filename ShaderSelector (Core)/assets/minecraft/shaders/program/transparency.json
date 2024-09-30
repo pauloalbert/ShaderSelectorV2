@@ -9,7 +9,7 @@
     "attributes": [ "Position" ],
     "samplers": [
         { "name": "DiffuseSampler" },
-        { "name": "DiffuseDepthSampler" },
+        { "name": "InDepthSampler" },
         { "name": "TranslucentSampler" },
         { "name": "TranslucentDepthSampler" },
         { "name": "ItemEntitySampler" },

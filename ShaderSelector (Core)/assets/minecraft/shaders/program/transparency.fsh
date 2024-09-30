@@ -1,7 +1,7 @@
 #version 150
 
 uniform sampler2D InSampler;
-uniform sampler2D DiffuseDepthSampler;
+uniform sampler2D InDepthSampler;
 uniform sampler2D TranslucentSampler;
 uniform sampler2D TranslucentDepthSampler;
 uniform sampler2D ItemEntitySampler;
@@ -87,7 +87,7 @@ vec3 blend( vec3 dst, vec4 src ) {
 
 void main() {
     color_layers[0] = vec4( texture( InSampler, texCoord ).rgb, 1.0 );
-    depth_layers[0] = texture( DiffuseDepthSampler, texCoord ).r;
+    depth_layers[0] = texture( InDepthSampler, texCoord ).r;
     active_layers = 1;
 
     try_insert( texture( TranslucentSampler, texCoord ), texture( TranslucentDepthSampler, texCoord ).r );

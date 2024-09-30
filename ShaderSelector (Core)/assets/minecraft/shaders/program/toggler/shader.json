@@ -10,7 +10,7 @@
     "samplers": [
         { "name": "InSampler" },
         { "name": "ControlSampler" },
-        { "name": "DiffuseDepthSampler" }
+        { "name": "InDepthSampler" }
     ],
     "uniforms": [
         { "name": "InSize",     "type": "float",     "count": 2,  "values": [ 1.0, 1.0 ] },
