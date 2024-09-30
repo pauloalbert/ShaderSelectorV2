@@ -6,7 +6,6 @@
     },
     "vertex": "toggler/shader",
     "fragment": "toggler/shader",
-    "attributes": [ "Position" ],
     "samplers": [
         { "name": "InSampler" },
         { "name": "ControlSampler" },

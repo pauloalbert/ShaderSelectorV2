@@ -6,7 +6,6 @@
     },
     "vertex": "screenquad",
     "fragment": "transparency",
-    "attributes": [ "Position" ],
     "samplers": [
         { "name": "DiffuseSampler" },
         { "name": "InDepthSampler" },
