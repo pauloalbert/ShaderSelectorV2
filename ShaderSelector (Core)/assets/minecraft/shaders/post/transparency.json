@@ -1,97 +1,123 @@
 {
-    "targets": [
-        { "name": "controller", "width": 2, "height": 3 },
-        { "name": "controllerSwap", "width": 2, "height": 3 },
-        "water",
-        "translucent",
-        "itemEntity",
-        "particles",
-        "clouds",
-        "weather",
-        "final",
-        "swap"
-    ],
+    "targets" : {
+        "final": {},
+        "controller": {"width": 2, "height": 3 },
+        "controllerSwap": { "width": 2, "height": 3 }
+    },
     "passes": [
         {
-            "name": "toggler/copy",
-            "intarget": "controller",
-            "outtarget": "controllerSwap"
+            "program": "ss:toggler/copy",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "controller"
+                }   
+            ],
+            "output" : "controllerSwap"
         },
         {
-            "name": "toggler/findcolor",
-            "intarget": "controllerSwap",
-            "outtarget": "controller",
-            "auxtargets": [
+            "name": "ss:toggler/findcolor",
+            "inputs": [
                 {
-                    "name": "ParticleSampler",
-                    "id": "particles"
+                    "sampler_name": "In",
+                    "target": "controllerSwap"
+                },
+                {
+                    "sampler_name": "Particles",
+                    "id": "minecraft:particles"
                 }
-            ]
+            ],
+            "output": "controller"
         },
         {
-            "name": "transparency",
-            "intarget": "minecraft:main",
-            "outtarget": "swap",
-            "auxtargets": [
+            "program": "minecraft:post/transparency",
+            "inputs": [
                 {
-                    "name": "DiffuseDepthSampler",
-                    "id": "minecraft:main:depth"
+                    "sampler_name": "Main",
+                    "target": "minecraft:main"
                 },
                 {
-                    "name": "TranslucentSampler",
-                    "id": "translucent"
+                    "sampler_name": "MainDepth",
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
                 },
                 {
-                    "name": "TranslucentDepthSampler",
-                    "id": "translucent:depth"
+                    "sampler_name": "Translucent",
+                    "target": "minecraft:translucent"
                 },
                 {
-                    "name": "ItemEntitySampler",
-                    "id": "itemEntity"
+                    "sampler_name": "TranslucentDepth",
+                    "target": "minecraft:translucent",
+                    "use_depth_buffer": true
                 },
                 {
-                    "name": "ItemEntityDepthSampler",
-                    "id": "itemEntity:depth"
+                    "sampler_name": "ItemEntity",
+                    "target": "minecraft:item_entity"
                 },
                 {
-                    "name": "ParticlesSampler",
-                    "id": "particles"
+                    "sampler_name": "ItemEntityDepth",
+                    "target": "minecraft:item_entity",
+                    "use_depth_buffer": true
                 },
                 {
-                    "name": "ParticlesDepthSampler",
-                    "id": "particles:depth"
+                    "sampler_name": "Particles",
+                    "target": "minecraft:particles"
                 },
                 {
-                    "name": "CloudsSampler",
-                    "id": "clouds"
+                    "sampler_name": "ParticlesDepth",
+                    "target": "minecraft:particles",
+                    "use_depth_buffer": true
                 },
                 {
-                    "name": "CloudsDepthSampler",
-                    "id": "clouds:depth"
+                    "sampler_name": "Clouds",
+                    "target": "minecraft:clouds"
                 },
                 {
-                    "name": "WeatherSampler",
-                    "id": "weather"
+                    "sampler_name": "CloudsDepth",
+                    "target": "minecraft:clouds",
+                    "use_depth_buffer": true
                 },
                 {
-                    "name": "WeatherDepthSampler",
-                    "id": "weather:depth"
+                    "sampler_name": "Weather",
+                    "target": "minecraft:weather"
+                },
+                {
+                    "sampler_name": "WeatherDepth",
+                    "target": "minecraft:weather",
+                    "use_depth_buffer": true
                 }
-            ]
+            ],
+            "output": "swap"
         },
         {
-            "name": "blit",
-            "intarget": "swap",
-            "outtarget": "final"
+            "program": "minecraft:post/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap"
+                }
+            ],
+            "output": "final"
         },
         {
-            "name": "toggler/shader",
-            "intarget": "final",
-            "outtarget": "minecraft:main",
-            "auxtargets": [
-                {"name": "ControlSampler","id": "controller"},
-                {"name": "DiffuseDepthSampler","id": "minecraft:main:depth"}
-            ]
+            "program": "ss:toggler/shader",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "final"
+                },
+                {
+                    "sampler_name": "Control",
+                    "target": "controller"
+                },
+                {
+                    "sampler_name": "DiffuseDepth",
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
+                }
+                
+            ],
+            "output": "minecraft:main"
         }
     ]
 }

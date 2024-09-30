@@ -8,7 +8,7 @@
     "fragment": "toggler/shader",
     "attributes": [ "Position" ],
     "samplers": [
-        { "name": "DiffuseSampler" },
+        { "name": "InSampler" },
         { "name": "ControlSampler" },
         { "name": "DiffuseDepthSampler" }
     ],

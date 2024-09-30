@@ -1,6 +1,6 @@
 #version 150
 
-uniform sampler2D DiffuseSampler;
+uniform sampler2D InSampler;
 uniform sampler2D DiffuseDepthSampler;
 uniform sampler2D ControlSampler;
 uniform vec2 OutSize;
@@ -12,7 +12,7 @@ out vec4 fragColor;
 
 
 void main() {
-    vec4 prev_color  = texture(DiffuseSampler, texCoord);
+    vec4 prev_color  = texture(InSampler, texCoord);
     vec4 overlay;
 	fragColor = prev_color;
 
