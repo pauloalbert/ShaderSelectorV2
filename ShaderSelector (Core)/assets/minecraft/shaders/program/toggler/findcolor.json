@@ -8,7 +8,7 @@
     "fragment": "toggler/findcolor",
     "attributes": [ "Position" ],
     "samplers": [
-        { "name": "DiffuseSampler" },
+        { "name": "InSampler" },
         { "name": "ParticleSampler" }
     ],
     "uniforms": [

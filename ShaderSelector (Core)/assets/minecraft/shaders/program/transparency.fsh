@@ -1,6 +1,6 @@
 #version 150
 
-uniform sampler2D DiffuseSampler;
+uniform sampler2D InSampler;
 uniform sampler2D DiffuseDepthSampler;
 uniform sampler2D TranslucentSampler;
 uniform sampler2D TranslucentDepthSampler;
@@ -54,7 +54,7 @@ void try_insert_particle( vec4 color, float depth ) {
     bool isMarker = col.rg * 255. == vec2(254., 253.);
     if (isMarker) {
         col = texture(
-            DiffuseSampler,
+            InSampler,
             texCoord + vec2(0.0, oneTexel.y)
         );
     }
@@ -86,7 +86,7 @@ vec3 blend( vec3 dst, vec4 src ) {
 }
 
 void main() {
-    color_layers[0] = vec4( texture( DiffuseSampler, texCoord ).rgb, 1.0 );
+    color_layers[0] = vec4( texture( InSampler, texCoord ).rgb, 1.0 );
     depth_layers[0] = texture( DiffuseDepthSampler, texCoord ).r;
     active_layers = 1;
 
