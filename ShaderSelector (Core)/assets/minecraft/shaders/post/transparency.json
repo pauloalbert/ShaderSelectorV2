@@ -1,14 +1,9 @@
 {
-    "blend": {
-        "func": "add",
-        "srcrgb": "one",
-        "dstrgb": "zero"
-    },
-    "vertex": "screenquad",
-    "fragment": "transparency",
+    "vertex": "minecraft:post/screenquad",
+    "fragment": "minecraft:post/transparency",
     "samplers": [
-        { "name": "DiffuseSampler" },
-        { "name": "InDepthSampler" },
+        { "name": "MainSampler" },
+        { "name": "MainDepthSampler" },
         { "name": "TranslucentSampler" },
         { "name": "TranslucentDepthSampler" },
         { "name": "ItemEntitySampler" },
